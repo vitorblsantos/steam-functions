@@ -53,7 +53,7 @@ export interface ISteamResponse {
   total_count: number;
 }
 
-export type IDocument = {
+export type ISteamData = {
   _id: string;
   _metadata: {
     createdAt: Timestamp;
