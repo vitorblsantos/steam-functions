@@ -14,6 +14,7 @@
   "devDependencies": {
     "@firebase/functions-types": "^0.6.2",
     "@types/node": "^22.1.0",
+    "@types/uuid": "^10.0.0",
     "@typescript-eslint/eslint-plugin": "^8.0.0",
     "@typescript-eslint/parser": "^8.0.0",
     "concurrently": "^8.2.2",
