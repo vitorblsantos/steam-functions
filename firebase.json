@@ -16,16 +16,23 @@
       ]
     }
   ],
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
   "emulators": {
-    "functions": {
-      "port": 5001
+    "firestore": {
+      "port": 5051
     },
-    "ui": {
-      "enabled": true
+    "functions": {
+      "port": 5052
+    },
+    "pubsub": {
+      "port": 5053
     },
     "singleProjectMode": true,
-    "pubsub": {
-      "port": 8085
+    "ui": {
+      "enabled": true
     }
   }
 }

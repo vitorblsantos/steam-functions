@@ -27,6 +27,6 @@ Sentry.init({
 Sentry.setTag('app-name', 'steam-functions')
 
 exports.SteamSnapshot = functions.pubsub
-  .schedule("* */1 * * *")
+  .schedule("*/1 * * * *")
   .timeZone(TIMEZONE)
   .onRun(ControllersSteam.Snapshot)
