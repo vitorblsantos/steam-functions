@@ -1,8 +1,8 @@
 import { firestore } from 'firebase-admin'
 import { v4 } from 'uuid'
 
-import { InstanceSteam } from '../../services/index.services'
-import { ISteamResponse } from '../../types/steam/steam.types'
+import { ServiceSteam } from '../../services/index.services'
+import { IDocument, ISteamResponse } from '../../types/steam/steam.types'
 import { Winston } from '../../utils/index.utils'
 
 import { SteamError } from './steam.errors'
@@ -15,10 +15,10 @@ export const Snapshot = async () => {
 
     logger.info('Iniciando execução')
 
-    const { data, status }: { data: ISteamResponse; status: number } = await InstanceSteam.get('/market/search/render/', {
+    const { data, status }: { data: ISteamResponse; status: number } = await ServiceSteam.get('/market/search/render/', {
       params: {
         start: 0,
-        count: 1,
+        count: 100,
         sort_column: 'popular',
         sort_dir: 'desc',
         appid: '730',
@@ -33,17 +33,19 @@ export const Snapshot = async () => {
 
     for (let counter = 0; counter < data.pagesize; counter++) {
       const _id = v4()
-      const item: ISteamResponse = data.results[counter]
+      const response: ISteamResponse = data.results[counter]
       const today = getDateFirestoreTimestamp()
 
-      const oddDocument = {
+      const document: IDocument = {
         _id,
-        createdAt: today,
-        ...item,
-        updateAt: today
+        _metadata: {
+          createdAt: today,
+          updateAt: today
+        },
+        ...response,
       }
 
-      await firestore().collection('steam').doc(_id).set(oddDocument)
+      await firestore().collection('steam').doc(_id).set(document)
 
       logger.info(`Documento - ${_id} criado`)
     }

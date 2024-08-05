@@ -1,5 +1,5 @@
 import axios from 'axios'
 
-export const InstanceSteam = axios.create({
+export const ServiceSteam = axios.create({
   baseURL: 'https://steamcommunity.com'
 })

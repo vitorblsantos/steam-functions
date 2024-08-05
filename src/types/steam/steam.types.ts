@@ -1,3 +1,5 @@
+import { Timestamp } from 'firebase-admin/firestore'
+
 interface IAssetDescription {
   appid: number;
   classid: string;
@@ -50,3 +52,11 @@ export interface ISteamResponse {
   start: number;
   total_count: number;
 }
+
+export type IDocument = {
+  _id: string;
+  _metadata: {
+    createdAt: Timestamp;
+    updateAt: Timestamp;
+  };
+} & ISteamResponse;

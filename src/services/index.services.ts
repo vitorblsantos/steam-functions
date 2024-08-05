@@ -1,2 +1,2 @@
-export { InstanceSteam } from './steam/steam.services'
+export { ServiceSteam } from './steam/steam.services'
 
