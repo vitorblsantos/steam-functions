@@ -1,0 +1,13 @@
+{
+  "watch": [
+    "src"
+  ],
+  "ext": "*",
+  "ignore": [
+    "node_modules",
+    "test",
+    "dist",
+    "**/*spec.ts"
+  ],
+  "exec": "concurrently --kill-others-on-fail \"rimraf ./dist/\" \"yarn build\" \"firebase emulators:start\""
+}
