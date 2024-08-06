@@ -1,1 +1,1 @@
-export const TIMEZONE = 'America/Sao_Paulo'
+export { Winston } from './winston/winston.config'

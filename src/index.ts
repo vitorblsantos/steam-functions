@@ -1,12 +1,11 @@
 import 'dotenv/config'
 
 import { nodeProfilingIntegration } from '@sentry/profiling-node'
+import { onMessagePublished } from 'firebase-functions/v2/pubsub'
 
 import * as admin from 'firebase-admin'
-import * as functions from 'firebase-functions'
 import * as Sentry from '@sentry/google-cloud-serverless'
 
-import { TIMEZONE } from './config/index.config'
 import { ControllersSteam } from './controllers/index.controllers'
 
 admin.initializeApp()
@@ -26,7 +25,4 @@ Sentry.init({
 
 Sentry.setTag('app-name', 'steam-functions')
 
-exports.SteamSnapshot = functions.pubsub
-  .schedule("*/1 * * * *")
-  .timeZone(TIMEZONE)
-  .onRun(ControllersSteam.Snapshot)
+export const SteamSnapshot = onMessagePublished('steam-functions', ControllersSteam.Snapshot)

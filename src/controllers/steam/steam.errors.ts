@@ -1,8 +1,8 @@
-import { ApplicationError } from "../../utils/errors/index.errors"
+import { ApplicationError } from '../../errors/index.errors'
 
 export class SteamError extends ApplicationError {
   public static InternalServerError() {
-    return new SteamError("@steam-service/internal-server-error", "Internal server error");
+    return new SteamError('@steam-service/internal-server-error', 'Internal server error')
   }
 
   public toStatusCode = (): number => {

@@ -3,13 +3,12 @@ import { v4 } from 'uuid'
 
 import * as Sentry from '@sentry/google-cloud-serverless'
 
+import { Winston } from '../../config/index.config'
 import { ServiceSteam } from '../../services/index.services'
-import {  ISteamData, ISteamResponse } from '../../@types/steam/steam.types'
-
-import { SteamError } from './steam.errors'
+import { ISteamData, ISteamResponse } from '../../types/steam/steam.types'
 import { getDateFirestoreTimestamp } from '../../utils/date/date.utils'
 
-import { Winston } from '../../utils/index.utils'
+import { SteamError } from './steam.errors'
 
 export const Snapshot = async () => await Sentry.withScope(async () => {
   const logger = Winston('steam-controller-snapshot')
@@ -52,7 +51,6 @@ export const Snapshot = async () => await Sentry.withScope(async () => {
     }
 
   } catch (err) {
-    Sentry.captureException(`Exception ocurred while executing SteamSnapshot: ${JSON.stringify(err)}`)
     throw new SteamError('500', `Exception ocurred while executing SteamSnapshot: ${JSON.stringify(err)}`)
   }
 })

@@ -3,7 +3,7 @@ import { ptBR } from 'date-fns/locale'
 import { Timestamp } from 'firebase-admin/firestore'
 import { toZonedTime, format as formatDateZoned } from 'date-fns-tz'
 
-import { TIMEZONE } from '../../config/index.config'
+export const TIMEZONE = 'America/Sao_Paulo'
 
 export const formatTimestamp = (timestamp: string) => {
   const zonedTime = toZonedTime(timestamp, TIMEZONE)

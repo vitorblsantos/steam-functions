@@ -1,3 +1,5 @@
+import * as Sentry from '@sentry/google-cloud-serverless'
+
 export abstract class ApplicationError extends Error {
   public code: string
 
@@ -7,6 +9,7 @@ export abstract class ApplicationError extends Error {
   ) {
     super(message)
     this.code = code
+    Sentry.captureException(message)
   }
 
   abstract toStatusCode(): number
