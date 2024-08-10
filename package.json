@@ -2,6 +2,7 @@
   "author": "Vitor Barbosa de Lima Santos",
   "dependencies": {
     "@google-cloud/logging-winston": "^6.0.0",
+    "@google-cloud/pubsub": "^4.5.0",
     "@sentry/google-cloud-serverless": "^8.22.0",
     "@sentry/profiling-node": "^8.22.0",
     "axios": "^1.7.3",

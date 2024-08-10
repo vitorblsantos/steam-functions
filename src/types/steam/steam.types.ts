@@ -46,7 +46,7 @@ interface IResults {
 
 export interface ISteamResponse {
   pagesize: number;
-  results: IResults;
+  results: IResults[];
   searchdata: ISearchData;
   success: boolean;
   start: number;
@@ -59,4 +59,4 @@ export type ISteamData = {
     createdAt: Timestamp;
     updateAt: Timestamp;
   };
-} & ISteamResponse;
+} & ISteamResponse['results'];
