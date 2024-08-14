@@ -3,10 +3,7 @@ import * as Sentry from '@sentry/google-cloud-serverless'
 export abstract class ApplicationError extends Error {
   public code: string
 
-  constructor(
-    code: string = '@common/internal-server-error',
-    message: string = 'Internal server error.'
-  ) {
+  constructor(code: string = '@common/internal-server-error', message: string = 'Internal server error.') {
     super(message)
     this.code = code
     Sentry.captureException(message)

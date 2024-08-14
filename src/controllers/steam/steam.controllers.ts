@@ -15,8 +15,9 @@ export const Snapshot = async () =>
     logger.info('Iniciando execução')
 
     try {
-      const { data, status }: { data: ISteamResponse; status: number } =
-        await ServiceSteam.get('/market/search/render/', {
+      const { data, status }: { data: ISteamResponse; status: number } = await ServiceSteam.get(
+        '/market/search/render/',
+        {
           params: {
             start: 0,
             count: 1,
@@ -25,14 +26,12 @@ export const Snapshot = async () =>
             appid: '730',
             norender: 1
           }
-        })
+        }
+      )
 
       if (status !== 200) {
         logger.error('Erro na hora de buscar as informações na API')
-        throw new SteamError(
-          '500',
-          'Erro na hora de buscar as informações na API'
-        )
+        throw new SteamError('500', 'Erro na hora de buscar as informações na API')
       }
 
       const promises = data.results.map((el) => {
@@ -56,9 +55,6 @@ export const Snapshot = async () =>
 
       return await Promise.all(promises)
     } catch (err) {
-      throw new SteamError(
-        '500',
-        `Exception ocurred while executing SteamSnapshot: ${JSON.stringify(err)}`
-      )
+      throw new SteamError('500', `Exception ocurred while executing SteamSnapshot: ${JSON.stringify(err)}`)
     }
   })

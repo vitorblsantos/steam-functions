@@ -7,13 +7,7 @@ import { PubSubError } from './pubsub.errors'
 const logger = Winston('steam-controller-snapshot')
 const pubsub = new PubSub()
 
-const publish = async ({
-  data,
-  topic
-}: {
-  data: object
-  topic: string
-}): Promise<void> => {
+const publish = async ({ data, topic }: { data: object; topic: string }): Promise<void> => {
   try {
     const _data = Buffer.from(JSON.stringify(data))
     const _topic = pubsub.topic(topic)

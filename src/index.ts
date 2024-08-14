@@ -23,7 +23,4 @@ Sentry.init({
 
 Sentry.setTag('app-name', 'steam-functions')
 
-export const SteamSnapshot = onMessagePublished(
-  'steam-functions',
-  ControllersSteam.Snapshot
-)
+export const SteamSnapshot = onMessagePublished('steam-functions', ControllersSteam.Snapshot)
