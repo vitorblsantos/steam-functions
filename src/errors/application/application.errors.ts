@@ -14,10 +14,10 @@ export abstract class ApplicationError extends Error {
 
   abstract toStatusCode(): number
 
-  public toJSON(): { code: string, message: string } {
+  public toJSON(): { code: string; message: string } {
     return {
       code: this.code,
-      message: this.message,
+      message: this.message
     }
   }
 }

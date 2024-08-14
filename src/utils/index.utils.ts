@@ -1,1 +1,1 @@
-export { formatTimestamp } from './date/date.utils'
+export { formatTimestamp, getDateFirestoreTimestamp } from './date/date.utils'

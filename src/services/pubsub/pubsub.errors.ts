@@ -1,9 +1,9 @@
 import { ApplicationError } from '../../errors/index.errors'
 
-export class SteamError extends ApplicationError {
+export class PubSubError extends ApplicationError {
   public static InternalServerError() {
-    return new SteamError(
-      '@steam-service/internal-server-error',
+    return new PubSubError(
+      '@pubsub-service/internal-server-error',
       'Internal server error'
     )
   }

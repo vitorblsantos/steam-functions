@@ -17,4 +17,3 @@ describe('SteamSnapshot', () => {
     expect(result).toBeTruthy()
   })
 })
-

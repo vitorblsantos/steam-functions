@@ -9,5 +9,5 @@
     "dist",
     "**/*spec.ts"
   ],
-  "exec": "concurrently --kill-others-on-fail \"rimraf ./*.log\" \"rimraf ./dist/\" \"yarn build\" \"yarn lint\" \"firebase emulators:start\""
+  "exec": "concurrently --kill-others-on-fail \"npm run serve\" \"firebase emulators:start\""
 }

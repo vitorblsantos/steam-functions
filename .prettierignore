@@ -1,0 +1,10 @@
+**/.git
+**/node_modules
+
+.husky
+.vscode
+
+coverage
+dist
+
+package-lock.json
